@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #1a2e4a;
+  --color-navy-light: #243a5e;
+  --color-navy-dark: #0f1e33;
+  --color-gold: #c9a84c;
+  --color-gold-light: #d4b96a;
+  --color-gold-dark: #b08f3a;
+  --color-cream: #faf8f2;
+  --color-grey-light: #f5f5f5;
+  --color-grey-medium: #e5e5e5;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: #ffffff;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Custom scrollbar for carousels */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hero slider transitions */
+.hero-slide {
+  opacity: 0;
+  transition: opacity 700ms ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1;
+}
+
+/* Dropdown menu animation */
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+.dropdown-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Form focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: -1px;
+}
+
+/* Gold underline accent */
+.gold-underline::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-gold);
+  margin-top: 12px;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
